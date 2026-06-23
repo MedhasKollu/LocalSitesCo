@@ -486,28 +486,28 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:32px 0;font-si
       <h2 class="bebas">One startup fee.<br>One low monthly cost.</h2>
       <p>$399 startup. $29/month upkeep.</p>
     </div>
-    <div class="pricing-card-wrap">
-      <div class="price-card featured" style="max-width:650px;margin:auto;grid-column:1/-1;">
-        <span class="plan mono">One Simple Plan</span>
-        <span class="amount bebas">$399</span>
-        <span class="desc">One-time startup fee</span>
-        <ul class="check-list">
-          <li>Custom website design</li>
-          <li>Mobile responsive</li>
-          <li>Click-to-call button</li>
-          <li>Contact form</li>
-          <li>Google Maps integration</li>
-          <li>Basic SEO setup</li>
-          <li>Hosting setup included</li>
-          <li>Unlimited revisions before launch</li>
-        </ul>
-        <h3 style="margin-top:20px;">$29/month upkeep</h3>
-        <a class="btn-yellow" href="#contact">Get started →</a>
-        <p class="price-note" style="color:rgba(255,255,255,0.7);">
-          Hosting, maintenance, updates, and support included.
-        </p>
-      </div>
-    </div>
+    
+<div class="pricing-card-wrap">
+<div class="price-card featured" style="max-width:650px;margin:auto;grid-column:1/-1;">
+<span class="plan mono">One Simple Plan</span>
+<span class="amount bebas">$399</span>
+<span class="desc">One-time startup fee</span>
+<ul class="check-list">
+<li>Custom website design</li>
+<li>Mobile responsive</li>
+<li>Click-to-call button</li>
+<li>Contact form</li>
+<li>Google Maps integration</li>
+<li>Basic SEO setup</li>
+<li>Hosting included</li>
+<li>Unlimited revisions before launch</li>
+</ul>
+<h3 style="margin-top:20px;">$29/month upkeep</h3>
+<a class="btn-yellow" href="#contact">Get started →</a>
+<p class="price-note" style="color:rgba(255,255,255,0.7);">Hosting, maintenance, updates, and support included.</p>
+</div>
+</div>
+
   </div>
 </section>
 
@@ -544,7 +544,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:32px 0;font-si
 </section>
 
 <!-- ─── CTA / CONTACT ─────────────────────── -->
-<section class="cta-section" id="contact">
+<section class="cta-section" name="contact_info">
   <div class="wrap cta-inner">
     <div class="cta-left">
       <h2 class="bebas">Let's get your<br>business online.</h2>
@@ -567,23 +567,26 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:32px 0;font-si
       </div>
     </div>
     <div>
-      <div class="cta-form" id="contactForm">
+      <form class="cta-form" id="contactForm" action="https://formsubmit.co/localsitescompany@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="New LocalSitesCo Lead">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
         <div class="form-title">Get your free mockup →</div>
         <div class="field">
           <label>Business name</label>
-          <input type="text" id="bizName" placeholder="Mike's Handyman Service">
+          <input type="text" name="business_name" placeholder="Mike's Handyman Service">
         </div>
         <div class="field">
           <label>Your name</label>
-          <input type="text" id="ownerName" placeholder="Mike Johnson">
+          <input type="text" name="owner_name" placeholder="Mike Johnson">
         </div>
         <div class="field">
           <label>Best way to reach you</label>
-          <input type="text" id="contact" placeholder="Phone or email">
+          <input type="text" name="contact_info" placeholder="Phone or email">
         </div>
         <div class="field">
           <label>Type of business</label>
-          <select id="bizType">
+          <select name="business_type">
             <option value="">— pick one —</option>
             <option>Handyman / general repair</option>
             <option>Plumber</option>
@@ -597,10 +600,10 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:32px 0;font-si
         </div>
         <div class="field">
           <label>Anything else? (optional)</label>
-          <textarea id="notes" placeholder="Services you offer, areas you serve, colors you like…"></textarea>
+          <textarea name="notes" placeholder="Services you offer, areas you serve, colors you like…"></textarea>
         </div>
-        <button class="submit-btn" onclick="submitForm()">Send me a free mockup — no obligation</button>
-      </div>
+        <button type="submit" class="submit-btn">Send me a free mockup — no obligation</button>
+      </form>
       <div class="form-thanks" id="formThanks">
         <div class="big-check">✅</div>
         <h3>Got it — I'll be in touch within 24 hours!</h3>
@@ -618,20 +621,6 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:32px 0;font-si
   </div>
 </footer>
 
-<script>
-function submitForm(){
-  const biz = document.getElementById('bizName').value.trim();
-  const name = document.getElementById('ownerName').value.trim();
-  const contact = document.getElementById('contact').value.trim();
-  if(!biz || !name || !contact){
-    alert('Please fill in your business name, your name, and how to reach you.');
-    return;
-  }
-  document.getElementById('contactForm').style.display='none';
-  document.getElementById('formThanks').style.display='block';
-  // In production: replace this with a fetch() to your form backend (Formspree, EmailJS, etc.)
-  console.log('Form submitted:',{biz,name,contact});
-}
-</script>
+
 </body>
 </html>
