@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Business Websites — Fast, Affordable, Done Right</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────── */
+:root{
+  --ink:#0F0F0F;
+  --ink2:#1C1C1C;
+  --paper:#FFFFFF;
+  --cream:#FAF8F4;
+  --yellow:#F2C840;
+  --yellow-deep:#D4AE30;
+  --green:#1D5C3A;
+  --green-deep:#153F28;
+  --rust:#C84B2F;
+  --mid:#6B6860;
+  --line:#E8E4DC;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:0.01em;}
+.mono{font-family:'Space Mono',monospace;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+a{color:inherit;text-decoration:none;}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
+img{max-width:100%;}
+
+/* ── BUTTONS ────────────────────────────── */
+.btn-dark{
+  display:inline-block;background:var(--ink);color:#fff;
+  padding:14px 26px;border-radius:2px;font-weight:700;font-size:0.95rem;
+  transition:background .15s;
+}
+.btn-dark:hover{background:var(--ink2);}
+.btn-yellow{
+  display:inline-block;background:var(--yellow);color:var(--ink);
+  padding:14px 26px;border-radius:2px;font-weight:700;font-size:0.95rem;
+  transition:background .15s;
+}
+.btn-yellow:hover{background:var(--yellow-deep);}
+.btn-outline-light{
+  display:inline-block;border:2px solid rgba(255,255,255,0.55);color:#fff;
+  padding:13px 24px;border-radius:2px;font-weight:700;font-size:0.95rem;
+  transition:border-color .15s,background .15s;
+}
+.btn-outline-light:hover{border-color:#fff;background:rgba(255,255,255,0.1);}
+
+/* ── NAV ────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--ink);border-bottom:2px solid rgba(255,255,255,0.08);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1rem;
+}
+.logo-mark{
+  width:32px;height:32px;background:var(--yellow);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue';font-size:1rem;color:var(--ink);letter-spacing:0;
+}
+.nav-links{display:flex;gap:28px;font-size:0.88rem;font-weight:500;}
+.nav-links a{color:rgba(255,255,255,0.72);transition:color .15s;}
+.nav-links a:hover{color:#fff;}
+.nav-cta{
+  background:var(--yellow);color:var(--ink);padding:10px 18px;
+  border-radius:2px;font-weight:700;font-size:0.85rem;white-space:nowrap;
+}
+@media(max-width:720px){.nav-links{display:none;}}
+
+/* ── HERO ───────────────────────────────── */
+.hero{
+  background:var(--ink);color:#fff;
+  padding:90px 0 80px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 700px 500px at 70% 50%, rgba(242,200,64,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+.hero-kicker{
+  display:inline-block;background:rgba(242,200,64,0.15);border:1px solid rgba(242,200,64,0.35);
+  color:var(--yellow);padding:6px 14px;border-radius:2px;
+  font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  margin-bottom:22px;font-family:'Space Mono';
+}
+.hero h1{
+  font-family:'Bebas Neue';font-size:clamp(3rem,7vw,5.2rem);line-height:0.95;
+  margin-bottom:22px;color:#fff;
+}
+.hero h1 .hl{color:var(--yellow);}
+.hero p.sub{font-size:1.1rem;opacity:0.82;max-width:420px;margin-bottom:34px;line-height:1.65;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+
+/* hero stats */
+.hero-stats{
+  display:flex;gap:0;border:1px solid rgba(255,255,255,0.12);border-radius:4px;
+  overflow:hidden;margin-top:36px;
+}
+.hero-stat{
+  flex:1;padding:20px 18px;border-right:1px solid rgba(255,255,255,0.12);
+  text-align:center;
+}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .big{
+  font-family:'Bebas Neue';font-size:2.2rem;color:var(--yellow);display:block;
+}
+.hero-stat .label{font-size:0.78rem;opacity:0.6;font-family:'Space Mono';}
+
+/* right side visual */
+.hero-visual{position:relative;}
+.hero-search-mock{
+  background:#fff;border-radius:6px;padding:16px 18px;margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;color:var(--ink);
+  box-shadow:0 4px 32px rgba(0,0,0,0.4);
+}
+.google-g{
+  width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4285f4,#ea4335,#fbbc04,#34a853);
+  flex-shrink:0;
+}
+.search-text{font-size:0.92rem;color:#444;}
+.search-text strong{color:var(--ink);}
+.results-mock{display:flex;flex-direction:column;gap:10px;}
+.result-card{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;padding:16px 18px;position:relative;
+}
+.result-card.no-site{opacity:0.42;}
+.result-badge{
+  position:absolute;top:10px;right:12px;font-size:0.68rem;font-family:'Space Mono';
+  padding:3px 8px;border-radius:2px;
+}
+.badge-site{background:rgba(29,92,58,0.8);color:#5dffa0;}
+.badge-no{background:rgba(200,75,47,0.7);color:#ffb3a5;}
+.result-name{font-weight:700;font-size:0.95rem;color:#fff;margin-bottom:4px;}
+.result-meta{font-size:0.8rem;opacity:0.55;font-family:'Space Mono';}
+
+/* ── YELLOW BAND ────────────────────────── */
+.yellow-band{background:var(--yellow);padding:52px 0;}
+.yellow-band-inner{display:flex;gap:50px;align-items:center;flex-wrap:wrap;}
+.yellow-band h2{font-family:'Bebas Neue';font-size:clamp(2rem,4vw,2.8rem);color:var(--ink);flex:1;min-width:260px;line-height:1.05;}
+.yellow-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.ystat .big{font-family:'Bebas Neue';font-size:2.8rem;color:var(--ink);display:block;line-height:1;}
+.ystat .label{font-size:0.8rem;color:rgba(0,0,0,0.65);font-family:'Space Mono';margin-top:4px;display:block;max-width:140px;line-height:1.35;}
+
+/* ── DEMOS ──────────────────────────────── */
+.demos-section{padding:90px 0;background:var(--cream);}
+.sec-eyebrow{
+  font-family:'Space Mono';font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--rust);margin-bottom:14px;display:block;
+}
+.sec-head{margin-bottom:56px;}
+.sec-head h2{font-family:'Bebas Neue';font-size:clamp(2.2rem,4vw,3rem);color:var(--ink);margin-bottom:10px;}
+.sec-head p{font-size:1.05rem;opacity:0.72;max-width:480px;}
+.demos-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+@media(max-width:860px){.demos-grid{grid-template-columns:1fr;}}
+
+/* browser chrome mockup — signature element */
+.browser{
+  background:#fff;border-radius:10px;overflow:hidden;
+  box-shadow:0 8px 48px rgba(0,0,0,0.14);
+  border:1px solid var(--line);
+  transition:transform .25s,box-shadow .25s;
+}
+.browser:hover{transform:translateY(-4px);box-shadow:0 16px 60px rgba(0,0,0,0.18);}
+.chrome{
+  background:#F0EEE9;padding:12px 14px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;
+}
+.dots{display:flex;gap:6px;}
+.dot{width:11px;height:11px;border-radius:50%;}
+.dot-r{background:#FF5F57;}.dot-y{background:#FEBC2E;}.dot-g{background:#28C840;}
+.addr{
+  flex:1;background:#fff;border-radius:4px;padding:5px 12px;
+  font-size:0.74rem;font-family:'Space Mono';color:var(--mid);
+  border:1px solid var(--line);
+}
+.frame-wrap{
+  height:320px;overflow:hidden;position:relative;
+}
+.frame-wrap iframe{
+  width:1200px;height:820px;border:none;
+  transform:scale(0.42) translate(-50%,-50%);
+  transform-origin:top left;
+  position:absolute;top:50%;left:50%;
+  pointer-events:none;
+}
+.demo-footer{
+  padding:16px 18px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.demo-tag{font-size:0.82rem;font-weight:700;color:var(--mid);}
+.demo-link{
+  font-size:0.82rem;font-weight:700;color:var(--green);
+  display:flex;align-items:center;gap:4px;
+}
+
+/* ── INCLUDED ───────────────────────────── */
+.included-section{padding:90px 0;background:var(--ink);color:#fff;}
+.included-section .sec-eyebrow{color:var(--yellow);}
+.included-section .sec-head h2{color:#fff;}
+.included-section .sec-head p{color:rgba(255,255,255,0.72);}
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;
+}
+@media(max-width:860px){.features-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.features-grid{grid-template-columns:1fr;}}
+.feat{padding:28px 24px;background:var(--ink);}
+.feat-icon{font-size:1.5rem;margin-bottom:12px;display:block;}
+.feat h3{font-size:1rem;font-weight:700;margin-bottom:6px;color:#fff;}
+.feat p{font-size:0.88rem;opacity:0.65;}
+
+/* ── PRICING ────────────────────────────── */
+.pricing-section{padding:90px 0;}
+.pricing-card-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:780px;}
+@media(max-width:700px){.pricing-card-wrap{grid-template-columns:1fr;}}
+.price-card{
+  border:2px solid var(--line);border-radius:6px;padding:32px 28px;
+}
+.price-card.featured{border-color:var(--green);background:var(--green);color:#fff;}
+.price-card .plan{font-size:0.78rem;font-family:'Space Mono';text-transform:uppercase;letter-spacing:0.08em;opacity:0.65;margin-bottom:14px;display:block;}
+.price-card.featured .plan{opacity:0.85;}
+.price-card .amount{font-family:'Bebas Neue';font-size:3rem;display:block;margin-bottom:4px;}
+.price-card .desc{font-size:0.9rem;opacity:0.75;margin-bottom:24px;}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.check-list li{font-size:0.92rem;display:flex;align-items:flex-start;gap:10px;}
+.check-list li::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;}
+.price-card.featured .check-list li::before{color:var(--yellow);}
+.price-note{font-size:0.82rem;opacity:0.55;margin-top:20px;font-family:'Space Mono';}
+
+/* ── PROCESS ────────────────────────────── */
+.process-section{padding:90px 0;background:var(--cream);}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;}
+@media(max-width:860px){.process-steps{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.process-steps{grid-template-columns:1fr;}}
+.process-steps::before{
+  content:'';position:absolute;top:24px;left:10%;right:10%;height:2px;
+  background:var(--line);z-index:0;
+}
+@media(max-width:860px){.process-steps::before{display:none;}}
+.pstep{text-align:center;position:relative;z-index:1;}
+.pstep-num{
+  width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--yellow);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue';font-size:1.3rem;margin:0 auto 16px;
+  border:3px solid var(--cream);
+}
+.pstep h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.pstep p{font-size:0.88rem;opacity:0.72;}
+
+/* ── CTA ────────────────────────────────── */
+.cta-section{
+  background:var(--green);color:#fff;padding:90px 0;
+}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media(max-width:860px){.cta-inner{grid-template-columns:1fr;}}
+.cta-left h2{font-family:'Bebas Neue';font-size:clamp(2.4rem,5vw,3.4rem);margin-bottom:14px;line-height:1;}
+.cta-left p{opacity:0.85;font-size:1.05rem;margin-bottom:28px;}
+.contact-ways{display:flex;flex-direction:column;gap:12px;}
+.contact-way{
+  display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:15px 18px;
+}
+.contact-way .icon{font-size:1.2rem;flex-shrink:0;}
+.contact-way .info .top{font-size:0.78rem;opacity:0.65;font-family:'Space Mono';text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:2px;}
+.contact-way .info .val{font-weight:700;font-size:1rem;}
+
+/* simple form */
+.cta-form{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:28px;}
+.form-title{font-weight:700;font-size:1.08rem;margin-bottom:20px;}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.field label{font-size:0.82rem;font-weight:600;opacity:0.85;}
+.field input,.field textarea,.field select{
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+  border-radius:3px;padding:11px 14px;color:#fff;font-family:'DM Sans';font-size:0.95rem;
+  transition:border-color .15s;
+}
+.field input::placeholder,.field textarea::placeholder{opacity:0.5;}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:none;border-color:var(--yellow);
+}
+.field select option{background:var(--green);color:#fff;}
+.field textarea{resize:vertical;min-height:90px;}
+.submit-btn{
+  width:100%;background:var(--yellow);color:var(--ink);border:none;cursor:pointer;
+  padding:14px 20px;border-radius:3px;font-weight:700;font-size:1rem;font-family:'DM Sans';
+  transition:background .15s;
+}
+.submit-btn:hover{background:var(--yellow-deep);}
+.form-thanks{display:none;text-align:center;padding:40px 20px;}
+.form-thanks .big-check{font-size:2.5rem;margin-bottom:12px;}
+.form-thanks h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;}
+.form-thanks p{opacity:0.8;font-size:0.92rem;}
+
+/* ── FOOTER ─────────────────────────────── */
+footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:32px 0;font-size:0.85rem;}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.foot-logo{font-weight:700;color:#fff;}
+
+/* ── SMOOTH SCROLL OFFSET ───────────────── */
+[id]{scroll-margin-top:70px;}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark">W</div>
+      LocalSitesCo
+    </div>
+    <div class="nav-links">
+      <a href="#demos">Examples</a>
+      <a href="#included">What's included</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get a free mockup</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-kicker">For local trades & service businesses</span>
+      <h1 class="bebas">Your business<br>deserves more<br>than a <span class="hl">Yelp page.</span></h1>
+      <p class="sub">I build clean, professional websites for handymen, plumbers, painters, and other local contractors — ready in days, not months.</p>
+      <div class="hero-btns">
+        <a class="btn-yellow" href="#demos">See examples ↓</a>
+        <a class="btn-outline-light" href="#contact">Get a free mockup</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="big bebas">97%</span>
+          <span class="label mono">of customers search online first</span>
+        </div>
+        <div class="hero-stat">
+          <span class="big bebas">$299</span>
+          <span class="label mono">flat rate, no monthly fees</span>
+        </div>
+        <div class="hero-stat">
+          <span class="big bebas">48hr</span>
+          <span class="label mono">average turnaround</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-search-mock">
+        <div class="google-g"></div>
+        <div class="search-text"><strong>handyman near me</strong> — Northville, MI</div>
+      </div>
+      <div class="results-mock">
+        <div class="result-card">
+          <span class="result-badge badge-site mono">has website ✓</span>
+          <div class="result-name">Crestline Handyman Co.</div>
+          <div class="result-meta">★★★★★ 5.0 · crestlinehandyman.com · (555) 555-0123</div>
+        </div>
+        <div class="result-card">
+          <span class="result-badge badge-site mono">has website ✓</span>
+          <div class="result-name">Hayes & Sons Home Repair</div>
+          <div class="result-meta">★★★★☆ 4.8 · hayesandsons.com · (555) 555-0199</div>
+        </div>
+        <div class="result-card no-site">
+          <span class="result-badge badge-no mono">no website ✗</span>
+          <div class="result-name">Mike's Handyman Service</div>
+          <div class="result-meta">★★★★★ 4.9 · Facebook page only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── YELLOW BAND ───────────────────────── -->
+<div class="yellow-band">
+  <div class="wrap yellow-band-inner">
+    <h2 class="bebas">If they can't find you,<br>they'll call someone else.</h2>
+    <div class="yellow-stats">
+      <div class="ystat">
+        <span class="big bebas">76%</span>
+        <span class="label mono">of "near me" searches result in a same-day call or visit</span>
+      </div>
+      <div class="ystat">
+        <span class="big bebas">$0</span>
+        <span class="label mono">you pay up front — mockup is always free</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── DEMOS ─────────────────────────────── -->
+<section class="demos-section" id="demos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Real examples I built</span>
+      <h2 class="bebas">Two sites. Two styles.<br>Both ready to go live.</h2>
+      <p>Every site is fully custom — not a template. Here's what I can build for you:</p>
+    </div>
+    <div class="demos-grid">
+
+      <!-- Demo 1 -->
+      <div class="browser">
+        <div class="chrome">
+          <div class="dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+          <div class="addr mono">crestlinehandyman.com</div>
+        </div>
+        <div class="frame-wrap">
+          <iframe srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono&display=swap" rel="stylesheet"><style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Inter,sans-serif;background:#F6F4EF;}header{background:#F6F4EF;border-bottom:1px solid #ddd;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;}.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.1rem;color:#16243F;}.nav-cta{background:#E8602C;color:#fff;padding:10px 18px;border-radius:3px;font-size:.85rem;font-weight:600;}.hero{background-image:linear-gradient(rgba(22,36,63,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(22,36,63,.1) 1px,transparent 1px);background-size:40px 40px;padding:72px 28px;}.h1{font-family:"Space Grotesk",sans-serif;font-size:3.2rem;font-weight:700;color:#16243F;line-height:1.05;margin-bottom:20px;}.h1 span{color:#E8602C;}.sub{font-size:1.05rem;color:#444;max-width:440px;margin-bottom:28px;}.btn{background:#16243F;color:#fff;padding:14px 24px;border-radius:3px;font-weight:600;display:inline-block;margin-right:12px;}.ticket{background:#fff;border:1.5px solid #16243F;box-shadow:8px 8px 0 #E8602C;border-radius:6px;padding:22px;max-width:300px;margin-top:28px;}.tr{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #ddd;font-size:.9rem;}.stamp{color:#E8602C;font-weight:700;font-size:.75rem;border:2px solid #E8602C;padding:3px 8px;border-radius:3px;display:inline-block;margin-bottom:10px;}.dark{background:#16243F;color:#fff;padding:40px 28px;}.dark h2{font-family:"Space Grotesk",sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:20px;}.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}.pstep .n{color:#E8602C;font-weight:700;font-family:monospace;font-size:.8rem;}.pstep h3{font-size:.95rem;color:#fff;margin:6px 0;}.pstep p{font-size:.82rem;opacity:.65;}</style></head><body><header><span class="brand">Crestline Handyman Co.</span><span class="nav-cta">Call (555) 555-0123</span></header><section class="hero"><div class="h1">Honest repairs.<br><span>No callbacks.</span></div><p class="sub">We handle drywall, fixtures, doors, small electrical and plumbing — with a written quote before we start.</p><a class="btn" href="#">Get a free quote</a><div class="ticket"><span class="stamp">FIXED ✓</span><div class="tr"><span>Leaky kitchen faucet</span><span style="opacity:.5">done</span></div><div class="tr"><span>Hang 3 shelves, hallway</span><span style="opacity:.5">done</span></div><div class="tr"><span>Patch drywall, bedroom</span><span style="opacity:.5">done</span></div></div></section><section class="dark"><h2>Four steps, no surprises.</h2><div class="pgrid"><div class="pstep"><span class="n">01</span><h3>You call or text</h3><p>Tell us what is on the list.</p></div><div class="pstep"><span class="n">02</span><h3>We quote it</h3><p>Flat written price upfront.</p></div><div class="pstep"><span class="n">03</span><h3>We show up on time</h3><p>Same-week in most cases.</p></div><div class="pstep"><span class="n">04</span><h3>We clean up</h3><p>Sweep before we leave.</p></div></div></section></body></html>'
+          title="Demo site 1 preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+        <div class="demo-footer">
+          <span class="demo-tag">Style: Professional &amp; Clean</span>
+          <a class="demo-link" href="example-site-1-crestline.html" target="_blank">Open full demo →</a>
+        </div>
+      </div>
+
+      <!-- Demo 2 -->
+      <div class="browser">
+        <div class="chrome">
+          <div class="dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+          <div class="addr mono">hayesandsons.com</div>
+        </div>
+        <div class="frame-wrap">
+          <iframe srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet"><style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:"Work Sans",sans-serif;background:#F4EDE0;}header{background:#2F4538;border-bottom:4px solid #D69A2D;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;}.brand{font-family:"Anton",sans-serif;color:#F4EDE0;font-size:1.25rem;letter-spacing:.02em;}.nav-cta{background:#B5482F;color:#fff;padding:10px 18px;border-radius:2px;font-weight:700;font-size:.85rem;}.hero{padding:70px 28px;background-color:#ECE2CE;background-image:radial-gradient(circle,rgba(47,69,56,.18) 1.5px,transparent 1.5px);background-size:24px 24px;text-align:center;}.badge{display:inline-block;background:#D69A2D;color:#22332A;padding:7px 16px;border-radius:30px;font-weight:700;font-size:.8rem;margin-bottom:20px;text-transform:uppercase;letter-spacing:.04em;}.h1{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:3.6rem;line-height:.98;color:#2F4538;margin-bottom:18px;}.accent{color:#B5482F;}.sub{font-size:1rem;max-width:420px;margin:0 auto 28px;opacity:.78;}.pegboard{display:flex;justify-content:center;gap:18px;margin-top:28px;}.peg{background:#F4EDE0;border:2px solid #2F4538;border-radius:8px;width:110px;padding:16px 8px;text-align:center;box-shadow:4px 4px 0 #2F4538;position:relative;}.peg::before{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:#ECE2CE;border:2px solid #2F4538;}.peg .icon{font-size:1.5rem;display:block;margin-bottom:6px;}.peg .lbl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}.punch{background:#2F4538;margin:40px 28px;border-radius:10px;padding:32px 28px;}.punch h2{font-family:"Anton",sans-serif;text-transform:uppercase;color:#F4EDE0;font-size:1.8rem;margin-bottom:20px;}.pi{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(244,237,224,.2);}.pi:last-child{border-bottom:none;}.check{width:22px;height:22px;border:2px solid #D69A2D;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#D69A2D;font-weight:700;font-size:.85rem;}.pi-text h3{color:#F4EDE0;font-size:.95rem;font-weight:700;margin-bottom:3px;}.pi-text p{font-size:.82rem;opacity:.65;color:#F4EDE0;}</style></head><body><header><span class="brand">Hayes &amp; Sons</span><span class="nav-cta">Call (555) 555-0199</span></header><section class="hero"><span class="badge">★ 5.0 rated · Family owned</span><div class="h1">Your honey-do<br>list, <span class="accent">handled.</span></div><p class="sub">We fix what is broken, hang what needs hanging, and patch what needs patching — all in one visit.</p><div class="pegboard"><div class="peg"><span class="icon">🔧</span><span class="lbl">Plumbing</span></div><div class="peg"><span class="icon">🪛</span><span class="lbl">Repairs</span></div><div class="peg"><span class="icon">💡</span><span class="lbl">Electrical</span></div></div></section><section class="punch"><h2>The stuff that is been bugging you</h2><div class="pi"><div class="check">✓</div><div class="pi-text"><h3>That faucet dripping for months</h3><p>Fixture repair and replacement, done clean.</p></div></div><div class="pi"><div class="check">✓</div><div class="pi-text"><h3>Drywall ding nobody wants to look at</h3><p>Patch, sand, and paint-matched touch-up.</p></div></div><div class="pi"><div class="check">✓</div><div class="pi-text"><h3>TV still leaning against the wall</h3><p>Studs found, level checked, mounted to stay.</p></div></div></section></body></html>'
+          title="Demo site 2 preview" loading="lazy" tabindex="-1"></iframe>
+        </div>
+        <div class="demo-footer">
+          <span class="demo-tag">Style: Warm &amp; Trustworthy</span>
+          <a class="demo-link" href="example-site-2-hayesandsons.html" target="_blank">Open full demo →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── INCLUDED ───────────────────────────── -->
+<section class="included-section" id="included">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">What you get</span>
+      <h2 class="bebas">Everything included,<br>nothing extra.</h2>
+      <p>One flat price covers design, hosting setup, and as many revisions as it takes to get it right.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat"><span class="feat-icon">⚡</span><h3>48-hour turnaround</h3><p>Most sites are live within two days of our first call.</p></div>
+      <div class="feat"><span class="feat-icon">📱</span><h3>Mobile-friendly</h3><p>Looks great on every device — phone, tablet, and desktop.</p></div>
+      <div class="feat"><span class="feat-icon">🔍</span><h3>Google-ready</h3><p>Basic SEO baked in so customers searching "near me" can find you.</p></div>
+      <div class="feat"><span class="feat-icon">📞</span><h3>Click-to-call button</h3><p>One tap connects a customer straight to your phone.</p></div>
+      <div class="feat"><span class="feat-icon">📝</span><h3>Contact form</h3><p>Quote requests go straight to your inbox without anyone typing an email.</p></div>
+      <div class="feat"><span class="feat-icon">🎨</span><h3>Custom to your brand</h3><p>Real colors, real photos (you send them), real content. Not a template.</p></div>
+      <div class="feat"><span class="feat-icon">🌐</span><h3>Free hosting setup</h3><p>I'll get it live on GitHub Pages or Netlify — zero monthly fees for you.</p></div>
+      <div class="feat"><span class="feat-icon">🔄</span><h3>Unlimited revisions</h3><p>Not happy? We keep tweaking until you are. Simple as that.</p></div>
+      <div class="feat"><span class="feat-icon">🤝</span><h3>Free mockup first</h3><p>See a real draft of your site before you pay a single dollar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ───────────────────────────── -->
+<section class="pricing-section" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Pricing</span>
+      <h2 class="bebas">Simple, flat pricing.<br>No monthly surprises.</h2>
+      <p>No subscriptions, no maintenance contracts. You own your site outright.</p>
+    </div>
+    <div class="pricing-card-wrap">
+      <div class="price-card">
+        <span class="plan mono">Starter</span>
+        <span class="amount bebas">$199</span>
+        <span class="desc">Perfect for getting online fast</span>
+        <ul class="check-list">
+          <li>1-page site (all sections)</li>
+          <li>Mobile responsive</li>
+          <li>Click-to-call button</li>
+          <li>Contact form</li>
+          <li>Free hosting setup</li>
+          <li>Delivered in 48 hours</li>
+        </ul>
+        <a class="btn-dark" href="#contact">Get started →</a>
+        <p class="price-note">+ domain ($12/yr, optional)</p>
+      </div>
+      <div class="price-card featured">
+        <span class="plan mono">Full Site ★ Most popular</span>
+        <span class="amount bebas">$299</span>
+        <span class="desc">The complete package, nothing held back</span>
+        <ul class="check-list">
+          <li>Everything in Starter</li>
+          <li>Google Maps embed</li>
+          <li>Services page / detail</li>
+          <li>Photo gallery section</li>
+          <li>Google review integration</li>
+          <li>Basic SEO + Google indexing</li>
+          <li>Unlimited revisions until happy</li>
+        </ul>
+        <a class="btn-yellow" href="#contact">Get started →</a>
+        <p class="price-note" style="color:rgba(255,255,255,0.5);">Free mockup before any payment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ───────────────────────────── -->
+<section class="process-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">How it works</span>
+      <h2 class="bebas">Four steps.<br>Usually done this week.</h2>
+    </div>
+    <div class="process-steps">
+      <div class="pstep">
+        <div class="pstep-num bebas">1</div>
+        <h3>Free mockup</h3>
+        <p>I build a draft of your site — using your actual business name and info — before you commit to anything.</p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num bebas">2</div>
+        <h3>You approve it</h3>
+        <p>Like what you see? We tweak until it's exactly right. Don't love it? You owe me nothing.</p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num bebas">3</div>
+        <h3>Pay once</h3>
+        <p>Flat fee, paid after you've approved the design. No upfront deposits, no hidden fees.</p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num bebas">4</div>
+        <h3>Go live</h3>
+        <p>I handle the hosting setup and get your site indexed on Google so customers can find it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA / CONTACT ─────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="wrap cta-inner">
+    <div class="cta-left">
+      <h2 class="bebas">Let's get your<br>business online.</h2>
+      <p>Fill out the form and I'll send you a free mockup of your site — built with your actual business name — within 24 hours.</p>
+      <div class="contact-ways">
+        <div class="contact-way">
+          <span class="icon">📱</span>
+          <div class="info">
+            <span class="top">Text or call</span>
+            <span class="val">(555) 555-0000</span>
+          </div>
+        </div>
+        <div class="contact-way">
+          <span class="icon">📧</span>
+          <div class="info">
+            <span class="top">Email</span>
+            <span class="val">yourname@email.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cta-form" id="contactForm">
+        <div class="form-title">Get your free mockup →</div>
+        <div class="field">
+          <label>Business name</label>
+          <input type="text" id="bizName" placeholder="Mike's Handyman Service">
+        </div>
+        <div class="field">
+          <label>Your name</label>
+          <input type="text" id="ownerName" placeholder="Mike Johnson">
+        </div>
+        <div class="field">
+          <label>Best way to reach you</label>
+          <input type="text" id="contact" placeholder="Phone or email">
+        </div>
+        <div class="field">
+          <label>Type of business</label>
+          <select id="bizType">
+            <option value="">— pick one —</option>
+            <option>Handyman / general repair</option>
+            <option>Plumber</option>
+            <option>Electrician</option>
+            <option>Painter</option>
+            <option>Landscaper / lawn care</option>
+            <option>Roofer</option>
+            <option>Cleaner / maid service</option>
+            <option>Other trade / service</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Anything else? (optional)</label>
+          <textarea id="notes" placeholder="Services you offer, areas you serve, colors you like…"></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitForm()">Send me a free mockup — no obligation</button>
+      </div>
+      <div class="form-thanks" id="formThanks">
+        <div class="big-check">✅</div>
+        <h3>Got it — I'll be in touch within 24 hours!</h3>
+        <p>I'll build a free mockup using your real business name and send it over. No obligation at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────── -->
+<footer>
+  <div class="wrap foot-inner">
+    <span class="foot-logo">LocalSitesCo — Northville, MI</span>
+    <span>Websites for local businesses · Fast · Affordable · No monthly fees</span>
+  </div>
+</footer>
+
+<script>
+function submitForm(){
+  const biz = document.getElementById('bizName').value.trim();
+  const name = document.getElementById('ownerName').value.trim();
+  const contact = document.getElementById('contact').value.trim();
+  if(!biz || !name || !contact){
+    alert('Please fill in your business name, your name, and how to reach you.');
+    return;
+  }
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formThanks').style.display='block';
+  // In production: replace this with a fetch() to your form backend (Formspree, EmailJS, etc.)
+  console.log('Form submitted:',{biz,name,contact});
+}
+</script>
+</body>
+</html>
